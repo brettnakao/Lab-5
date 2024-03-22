@@ -8,18 +8,21 @@ Created on Mon Mar  4 14:57:13 2024
 
 import numpy as np
 
-vo = 30
-theta = 45
-g = 9.8
+# Constants
+vo = 30 # m/s
+theta = 45 # in degrees
+g = 9.8 # in m/s^2
 
 theta_rad = np.radians(theta)
 
+# Calculate initial velocities along x and y
 vo_y = vo*np.sin(theta_rad)
 vo_x = vo*np.cos(theta_rad)
 
+# Calculate total time
 t_total = 2*vo_y/g
 
-time_intervals = np.linspace(0,t_total, 10)
+time_intervals = np.linspace(0, t_total, 10)
 
 x = np.empty(len(time_intervals))
 y = np.empty(len(time_intervals))
@@ -30,6 +33,7 @@ for i in range(len(time_intervals)):
     x[i] = x_t
     y[i] = y_t
 
+# Plot the curves
 import matplotlib.pyplot as plt
 
 plt.subplot(1,3,1)
