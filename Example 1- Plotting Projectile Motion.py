@@ -7,35 +7,36 @@ Created on Mon Mar  4 14:57:13 2024
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Constants
-vo = 30 # m/s
-theta = 45 # in degrees
-g = 9.8 # in m/s^2
+v0 = 2.2 # in m/s
+theta = 30 # in degrees
+g = 9.8 # in m/s^2s
 
 theta_rad = np.radians(theta)
 
 # Calculate initial velocities along x and y
-vo_y = vo*np.sin(theta_rad)
-vo_x = vo*np.cos(theta_rad)
+v0_y = v0*np.sin(theta_rad)
+v0_x = v0*np.cos(theta_rad)
 
 # Calculate total time
-t_total = 2*vo_y/g
+t_total = 2*v0_y/g
 
-time_intervals = np.linspace(0, t_total, 10)
+time_intervals = np.linspace(0, t_total, 20)
 
+# Create empty arrays
 x = np.empty(len(time_intervals))
 y = np.empty(len(time_intervals))
 
+# Fill arrays with x and y values
 for i in range(len(time_intervals)):
-    x_t = vo_x*time_intervals[i]
-    y_t = vo_y*time_intervals[i] - .5*g*time_intervals[i]**2
+    x_t = v0_x*time_intervals[i]
+    y_t = v0_y*time_intervals[i] - .5*g*time_intervals[i]**2
     x[i] = x_t
     y[i] = y_t
 
 # Plot the curves
-import matplotlib.pyplot as plt
-
 plt.subplot(1,3,1)
 plt.plot(x,y)
 plt.xlabel('x')
